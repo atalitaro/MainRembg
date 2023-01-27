@@ -3,8 +3,11 @@ from rembg import remove
 from PIL import Image
 import os
 
+import time
 
 if __name__ == "__main__":
+
+    start_time = time.perf_counter()
 
     parser = argparse.ArgumentParser()
     parser.add_argument("input")
@@ -25,6 +28,10 @@ if __name__ == "__main__":
        output = remove(input)
        output.save(output_path)
        os.remove(input_path)
+
+       end_time = time.perf_counter()
+       elapsed_time = end_time - start_time
+       print(elapsed_time)
 
        #outputパス確認
        if os.path.exists(output_path) == False :
